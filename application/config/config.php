@@ -2,7 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 
-$config['base_url'] = '';
+$config['base_url'] = 'http://madrigal.esy.es';
 
 
 $config['index_page'] = '';
