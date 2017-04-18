@@ -253,7 +253,7 @@
                 </li>
           </ul>
           <div class="collapse nav navbar-nav nav-collapse slide-down" id="nav-collapse2">
-            <form class="navbar-form navbar-right form-inline" role="form" action="<?php echo base_url('index.php/user/validlogin') ?>" method="post">
+            <form class="navbar-form navbar-right form-inline" role="form" action="<?php echo base_url('user/validlogin') ?>" method="post">
               <div class="form-group">
                 <label class="sr-only" for="Username">Username</label>
                 <input type="text" placeholder="Username" class="form-control" name="username">
