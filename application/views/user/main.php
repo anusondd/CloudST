@@ -246,13 +246,17 @@
                 <li><a href="http://stocker2.esy.es/user/about">About</a></li>
                 <li><a href="<?php echo site_url('onhandprint'); ?>">Example Store</a></li>
                 <li>
+                <!--
               <a class="btn btn-success btn-outline btn-circle collapsed"  data-toggle="collapse" href="#nav-collapse2" aria-expanded="false" aria-controls="nav-collapse2">Sign in</a>
+              -->
                 </li>
                 <li>
               <a class="btn btn-default btn-outline btn-circle collapsed"   href="<?php echo base_url('user/register') ?>" >Sign Up</a>
                 </li>
           </ul>
+          <!--
           <div class="collapse nav navbar-nav nav-collapse slide-down" id="nav-collapse2">
+          -->
             <form class="navbar-form navbar-right form-inline" role="form" action="<?php echo base_url('user/validlogin') ?>" method="post">
               <div class="form-group">
                 <label class="sr-only" for="Username">Username</label>
@@ -266,10 +270,11 @@
               </div>
               <button type="submit" class="btn btn-success">Sign in</button>
             </form>
-            </ul>
-            
+          </ul>
+            <!--  
         </div>
-        <ul>
+        -->
+              <ul>
                 
                 <?=$this->session->flashdata('msgerr')?>
             </ul>

@@ -198,7 +198,7 @@ input::-webkit-input-placeholder {
 							<div class="cols-sm-10">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-									<input type="password" class="form-control" name="confirm" id="confirm"  placeholder="Confirm your Password"/>
+									<input type="password" class="form-control" name="confirm" id="confirm_password"  placeholder="Confirm your Password"/>
 								</div>
 							</div>
 						</div>
@@ -213,7 +213,25 @@ input::-webkit-input-placeholder {
 				</div>
 			</div>
 		</div>
+		
+		<script type="text/javascript">
+			
+			var password = document.getElementById("password")
+  			, confirm_password = document.getElementById("confirm_password");
 
+			function validatePassword(){
+  				if(password.value != confirm_password.value) {
+    				confirm_password.setCustomValidity("Passwords Don't Match");
+  					} else {
+    					confirm_password.setCustomValidity('');
+ 							}
+					}
+
+					password.onchange = validatePassword;
+					confirm_password.onkeyup = validatePassword;
+
+					</script>
+					
 		<script type="text/javascript" src="assets/js/bootstrap.js"></script>
 	</body>
 </html>

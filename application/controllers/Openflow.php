@@ -40,9 +40,17 @@ class Openflow extends CI_Controller {
 
     public function openflow() {
         $this->load->view('template/backheader');
-        $this->load->view('openflow/Openflow');
+        $this->load->view('openflow/newdata');
         $this->load->view('template/backfooter');
     }
+
+    public function commit($id) {
+        $data['result'] = $this->Openflow_model->read_openflow($id);
+        $this->load->view('template/backheader');
+        $this->load->view('openflow/commit', $data);
+        $this->load->view('template/backfooter');
+    }
+
     public function flow($id) {
 
     	$config = array();
@@ -198,7 +206,7 @@ class Openflow extends CI_Controller {
 
     public function Newflow($id) {
         if ($this->input->server('REQUEST_METHOD') == TRUE) {
-            //$this->form_validation->set_rules('barcode', 'รหัสสินค้า', 'required', array('required' => 'ค่าห้ามว่าง!'));
+            $this->form_validation->set_rules('barcode', 'รหัสสินค้า', 'required', array('required' => 'ค่าห้ามว่าง!'));
             //$this->form_validation->set_rules('open_qty', 'จำนวนเบิก', 'required|numeric', array('required' => 'ค่าห้ามว่าง!', 'numeric' => 'ตัวเลขเท่านั้น'));
             //$this->form_validation->set_rules('unit', 'หน่วยนับ', 'required', array('required' => 'ค่าห้ามว่าง!'));
             $this->form_validation->set_rules('open_date', 'วันที่เบิก', 'required', array('required' => 'ค่าห้ามว่าง!'));
@@ -250,7 +258,7 @@ class Openflow extends CI_Controller {
                 $this->session->set_flashdata($data);
             }
             if ($this->input->post('id') == NULL) {
-                redirect('openflow/Openflow');
+                redirect('openflow/openflow');
             } else {
                 redirect('openflow/Editflow/' . $this->input->post('id'));
             }
@@ -285,6 +293,24 @@ class Openflow extends CI_Controller {
     		$data['link'] = $this->pagination->create_links();
     		$data['total_rows'] = $config['total_rows'];
         $this->load->view('popup/flowup', $data);
+    }
+
+    public function itemup() {
+        $config = array();
+        $config['base_url'] = base_url('openflow/flowup');
+        $config['total_rows'] = $this->Inventory_model->record_count_like($this->input->get('keyword'),$this->input->get('myword'));
+            $config['per_page'] = $this->input->get('keyword') == NULL ? 14 : 999;
+            $config['uri_segment'] = 3;
+            $choice = $config['total_rows'] / $config['per_page'];
+            $config['num_links'] = round($choice);
+
+            $this->pagination->initialize($config);
+
+            $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+            $data['results'] = $this->Inventory_model->fetch_inventory($config['per_page'], $page, $this->input->get('keyword'),$this->input->get('wordname'));
+            $data['link'] = $this->pagination->create_links();
+            $data['total_rows'] = $config['total_rows'];
+        $this->load->view('popup/itemup', $data);
     }
 
     public function locationup() {

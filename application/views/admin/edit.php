@@ -48,7 +48,7 @@
                                     echo 'selected';
                                 }
                                 ?>>
-                                    บ๊อค
+                                    ผู้จัดการเบิก-คืน
                                 </option>
                                 <option value="admin" <?php
                                 if ($user->user_type == 'admin') {

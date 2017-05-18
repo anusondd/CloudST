@@ -39,10 +39,13 @@
                 <h3 class="box-title">เพิ่มข้อมูล</h3>
             </div><!-- /.box-header -->
             <!-- form start -->
-            <form role="form" action="<?php echo base_url('openflow/postdata'); ?>" method="post">
+            <form role="form" action="<?php echo base_url('openflow/Newflow'); ?>" method="post">
                 <input type="hidden" name="item_id" id="item_id" value="<?php echo $this->session->flashdata('item_id'); ?>" >
                 <input type="hidden" name="location_id" id="location_id" value="<?php echo $this->session->flashdata('location_id'); ?>" >
                 <input type="hidden" name="onqty" id="onqty" value="<?php echo $this->session->flashdata('onqty'); ?>" >
+                <input type="hidden" name="status" id="status" value="Waiting" >
+                <input type="hidden" name="Tack" id="Tack" value="0" >
+                <input type="hidden" name="Net" id="Net" value="" >
                 <div class="box-body">
                     <div class="form-group">
                         <label for="exampleInputEmail1">รหัสสินค้า</label> <?php echo $this->session->flashdata('error_barcode'); ?>
@@ -58,13 +61,19 @@
                         <input type="text" id="itemname" class="form-control" name="itemname" value="<?php echo $this->session->flashdata('itemname'); ?>" readonly="true">
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputEmail1">จำนวนการสั่งซื้อสินค้า</label> <?php echo $this->session->flashdata('error_open_qty'); ?> <?php echo $this->session->flashdata('error_onqty'); ?>
-                        <input type="text" id="open_qty" class="form-control" name="open_qty" value="<?php echo $this->session->flashdata('open_qty'); ?>">
+                        <label for="exampleInputEmail1">ราคา</label> <?php echo $this->session->flashdata('error_price'); ?>
+                        <input type="text" id="price" class="form-control" name="price" value="<?php echo $this->session->flashdata('price'); ?>" readonly="true">
                     </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">จำนวนการสั่งซื้อสินค้า</label> <?php echo $this->session->flashdata('error_count'); ?> 
+                        <input type="text" id="count" class="form-control" name="count" value="<?php echo $this->session->flashdata('count'); ?>">
+                    </div>
+                    <!--
                     <div class="form-group">
                         <label for="exampleInputEmail1">หน่วยนับ</label> <?php echo $this->session->flashdata('error_unit'); ?>
                         <input type="text" id="unit" class="form-control" name="unit" value="<?php echo $this->session->flashdata('unit'); ?>" readonly="true">
                     </div>
+                    -->
                     <div class="form-group">
                         <label for="exampleInputEmail1">วันที่สั่งซื้อสินค้า</label> <?php echo $this->session->flashdata('error_open_date'); ?>
                         <input type="text" id="open_date" class="form-control" name="open_date" value="<?php echo $this->session->flashdata('open_date'); ?>" readonly="">
@@ -82,10 +91,12 @@
                         <label for="exampleInputEmail1">รหัสประจำตัวลูกค้า</label> <?php echo $this->session->flashdata('error_open_id'); ?>
                         <input type="text" id="open_id" class="form-control" name="open_id" value="<?php echo $this->session->flashdata('open_id'); ?>" readonly="true">
                     </div>
+                    <!--
                     <div class="form-group">
                         <label for="exampleInputEmail1">คลังสินค้า</label> <?php echo $this->session->flashdata('error_location_name'); ?>
                         <input type="text" id="location_name" class="form-control" name="location_name" value="<?php echo $this->session->flashdata('location_name'); ?>" readonly="true">
                     </div>
+                    -->
 
                 </div><!-- /.box-body -->
                 <div class="box-footer">

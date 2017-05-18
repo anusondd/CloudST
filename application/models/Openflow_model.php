@@ -82,15 +82,18 @@ class Openflow_model extends CI_Model {
 
     public function openflow($id=NULL) {
         $data = array(
-            //'item_id' => $this->input->post('item_id'),
-            //'itemname' => $this->input->post('itemname'),
-            //'open_qty' => $this->input->post('open_qty'),
-            //'unit' => $this->input->post('unit'),
+            'barcode' => $this->input->post('barcode'),
+            'itemname' => $this->input->post('itemname'),
+            'price' => $this->input->post('price'),
+            'count' => $this->input->post('count'),
             'open_date' => date('Y-m-d',strtotime(str_replace('/','-',$this->input->post('open_date')))),
             'name_customer' => $this->input->post('open_entry'),
             'id_customer' => $this->input->post('open_id'),
-            'id_users'    => $this->session->userdata('login_id')
-            //'open_location' => $this->input->post('location_id')
+            'id_users'    => $this->session->userdata('login_id'),
+            'Tack' => $this->input->post('Tack'),
+            'Net' => $this->input->post('total'),
+            'flowstatus' => $this->input->post('status')
+                
         );
         if ($id == NULL) {
             $this->db->insert('newflows', $data);

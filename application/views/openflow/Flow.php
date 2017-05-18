@@ -23,8 +23,8 @@
                 <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
                     <div class="row">
                         <div class="col-sm-6">
-                            <a class="btn btn-success" href="<?php echo  base_url('openflow/Openflow/'); ?>" role="button"><i class="fa fa-fw fa-plus-circle"></i> เพิ่มข้อมูล</a>
-                            <a class="btn btn-default" href="<?php echo  base_url('openflow'); ?>" role="button"><i class="fa fa-fw fa-refresh"></i> Refresh Data</a>
+                            <a class="btn btn-primary" href="<?php echo  base_url('openflow/Openflow/'); ?>" role="button"><i class="fa fa-fw fa-plus-circle"></i> เพิ่มข้อมูลการสั่งซื้อ</a>
+                            <a class="btn btn-info" href="<?php echo  base_url('openflow'); ?>" role="button"><i class="fa fa-fw fa-refresh"></i> Refresh Data</a>
                         </div>
                         <div class="col-sm-6">
                             <div id="" class="dataTables_filter">
@@ -40,33 +40,45 @@
                             <table id="example1" class="table table-bordered table-hover table-striped" role="grid" aria-describedby="example1_info">
                                 <thead>
                                     <tr role="row">
-                                        <th class="sorting" tabindex="0"  rowspan="1" colspan="1" style="width: 2%;">รหัสรายการสั่งซื้อ</th>
-                                        <th class="sorting" tabindex="0"  rowspan="1" colspan="1" style="width: 20%;">ชื่อลูกค้า</th>
-                                        <th class="sorting" tabindex="0" rowspan="1" colspan="1" style="width: 10%">วันที่</th>
-                                        <th class="sorting" tabindex="0" rowspan="1" colspan="1" style="width: 10%">รายละเอียด</th>
-                                        <th class="sorting" tabindex="0" rowspan="1" colspan="1" style="width: 15%">สถาณะการโอน</th>
-                                        <th class="sorting" tabindex="0" rowspan="1" colspan="1" style="width:  5%">option</th>
+                                        <th class="sorting" tabindex="0"  rowspan="1" colspan="1" style="width:  5%">สถานะ</th>
+                                        <th class="sorting" tabindex="0"  rowspan="1" colspan="1" style="width:  5%;">Tack</th>
+                                        <th class="sorting" tabindex="0"  rowspan="1" colspan="1" style="width:  5%;">ชื่อลูกค้า</th>
+                                        <th class="sorting" tabindex="0"  rowspan="1" colspan="1" style="width:  5%">วันที่</th>
+                                        <th class="sorting" tabindex="0"  rowspan="1" colspan="1" style="width:  10%">ชื่อสินค้า</th>
+                                        <th class="sorting" tabindex="0"  rowspan="1" colspan="1" style="width:  5%">ราคา</th>
+                                        <th class="sorting" tabindex="0"  rowspan="1" colspan="1" style="width:  5%">จำนวน</th>
+                                        <th class="sorting" tabindex="0"  rowspan="1" colspan="1" style="width:  5%">ราคาสุทธิ</th>
+                                        <th class="sorting" tabindex="0"  rowspan="1" colspan="1" style="width:  5%">ที่อยู่</th>
+                                        
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php if(!empty($results)){ foreach ($results as $data) { ?>
                                         <tr role="row">
-                                            <td><?php echo $data->id; ?></td>
+                                            <td><?php echo $data->flowstatus;?> 
+                                                <?php if ($data->flowstatus =='Waiting' ) { ?>
+                                                <a href="<?php echo base_url('openflow/commit/'.$data->id); ?>" class="btn btn-warning">ยืนยันการชำระ</a>
+                                                <?php }else{  ?>
+                                                <a href="" class="btn btn-success">จ่ายแล้ว</a>
+                                                <?php } ?>
+                                            </td>
+                                            <td><?php echo $data->Tack; ?></td>
                                             <td><a href="<?php echo base_url('openflow/edit/'.$data->id); ?>"><?php echo $data->name_customer; ?></td>
                                             <td><?php echo $data->open_date;   ?></td>
+                                            <td><?php echo $data->itemname;   ?></td>
+                                            <td><?php echo $data->price;   ?></td>                                            
+                                            <td><?php echo $data->count;   ?></td>
+                                            <td><?php echo $data->price*$data->count;?></td>
                                             <td>
-                                            <a class="btn btn-info btn-xs management" href="<?php echo  base_url('openflow/flow/' .$data->id); ?>" role="button"><i class="fa fa-fw fa-trash" onclick="setName('<?php echo $data->id; ?>','<?php echo $data->name_customer; ?>');" ></i> จัดการสินค้าในรายการ</a>
+                                            
+                                            <a href="<?php echo base_url('customer/read/'.$data->id_customer); ?>"
+                                            class="btn btn-primary"
+                                            >
+                                             รายละเอียด   
+                                            </a>
                                             </td>
-                                            <td>
-                                            <?php echo $data->flowstatus; ?>
-                                            <a class="btn btn-success btn-xs deleteLine" href="<?php echo  base_url('openflow/remove/'.$data->id); ?>" role="button"><i class="fa fa-fw fa-trash"></i> ยืนยันการชำระเงิน</a>
-                                            </td>                                            
-                                            <td>
-                                                <a class="btn btn-danger btn-xs deleteLine" href="<?php echo  base_url('openflow/remove/'.$data->id); ?>" role="button"><i class="fa fa-fw fa-trash"></i> ลบข้อมูล</a>
-                                                
 
-                                            </td>
-                                        </tr>
+
                                     <?php } } ?>
                                 </tbody>
 

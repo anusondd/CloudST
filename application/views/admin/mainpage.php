@@ -4,7 +4,7 @@
     <section class="content-header">
         <h1>
             ผู้ใช้งาน
-            <small>จัดการข้อมูลลูกค้าในระบบ</small>
+            <small>จัดการผู้ใช้งานในระบบ</small>
         </h1>
         <ol class="breadcrumb">
             <li><a href="<?php echo  base_url(); ?>"><i class="fa fa-dashboard"></i> หน้าแรก</a></li>
@@ -24,8 +24,8 @@
                 <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
                     <div class="row">
                         <div class="col-sm-6">
-                            <a class="btn btn-success" href="<?php echo  base_url('customer/newdata'); ?>" role="button"><i class="fa fa-fw fa-plus-circle"></i> เพิ่มข้อมูล</a>
-                            <a class="btn btn-default" href="<?php echo  base_url('customer'); ?>" role="button"><i class="fa fa-fw fa-refresh"></i> Refresh Data</a>
+                            <!--<a class="btn btn-success" href="<?php echo  base_url('user/newdata'); ?>" role="button"><i class="fa fa-fw fa-plus-circle"></i> เพิ่มข้อมูล</a> -->
+                            <a class="btn btn-default" href="<?php echo  base_url('user'); ?>" role="button"><i class="fa fa-fw fa-refresh"></i> Refresh Data</a>
                         </div>
                         <div class="col-sm-6">
                             <div id="" class="dataTables_filter">
@@ -42,46 +42,26 @@
                                     <tr role="row">
                                         <th class="sorting" tabindex="0"  rowspan="1" colspan="1" style="width: 5%;">id</th>
                                         <th class="sorting" tabindex="0"  rowspan="1" colspan="1" style="width: 5%;">#</th>
-                                        <!--<th class="sorting" tabindex="0"  rowspan="1" colspan="1" style="width: 10%;">ชื่อผู้ใช้</th>-->
-                                        <th class="sorting" tabindex="0" rowspan="1" colspan="1" style="width: 20%">ชื่อจริง-นามสกุล</th>
-                                        <th class="sorting" tabindex="0" rowspan="1" colspan="1" style="width:  5%;">email</th>
-                                        <th class="sorting" tabindex="0" rowspan="1" colspan="1" style="width:  5%;">phone</th>
-                                        <th class="sorting" tabindex="0" rowspan="1" colspan="1" style="width:  5%;">social</th> 
-                                        <th class="sorting" tabindex="0" rowspan="1" colspan="1" style="width:  10%;">Address</th>
+                                        <th class="sorting" tabindex="0"  rowspan="1" colspan="1" style="width: 10%;">ชื่อผู้ใช้</th>
+                                        <th class="sorting" tabindex="0" rowspan="1" colspan="1" style="width: 30%">ชื่อจริง-นามสกุล</th>
+                                        <th class="sorting" tabindex="0" rowspan="1" colspan="1" style="width:  60px;">ช่องทางการติดต่อ Facebook,Line,Instargram</th>
                                        <!-- <th class="sorting" tabindex="0" rowspan="1" colspan="1" style="width:  60px;">ประเภทผู้ใช้</th>  -->
-                                        <th class="sorting" tabindex="0" rowspan="1" colspan="1" style="width:  5%;">&nbsp;</th>
+                                        <!--<th class="sorting" tabindex="0" rowspan="1" colspan="1" style="width:  60px;">&nbsp;</th> -->
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php if(!empty($results)){ foreach ($results as $data) { ?>
                                         <tr role="row">
-                                            <td><?php echo  $data->id; ?></td>
-                                            <td><img src="<?php echo base_url() . 'pictures/customers/user_' . $data->filename;?>" alt="" class="img-circle c160"></td>
-                                            <!--<td>
+                                            <td>00<?php echo  $data->id; ?></td>
+                                            <td><img src="<?php echo base_url() . 'pictures/user_' . $data->filename;?>" alt="" class="img-circle c160"></td>
+                                            <td>
                                             <a href="<?php echo base_url('user/edit/'.$data->id); ?>"><?php echo  $data->username; ?></a>
-                                            </td>-->
-                                            <td><a href="<?php echo base_url('customer/edit/'.$data->id); ?>"><?php echo  $data->firstname . ' ' . $data->lastname; ?></a></td>
-                                            <td><?php echo  $data->email; ?></td>
-                                            <td><?php echo  $data->phone; ?></td>                                            
-                                            <td>
-                                                <select name="social" id="social" class="form-control" required="required">
-                                                    <option value="<?php echo  $data->Facebook; ?>">Facebook :<?php echo  $data->Facebook; ?></option>
-                                                    <option value="<?php echo  $data->line; ?>">ID Line :<?php echo  $data->line; ?></option>
-                                                    <option value="<?php echo  $data->instargram; ?>">IG :<?php echo  $data->instargram; ?></option>
-                                                </select>
                                             </td>
-                                            
-                                            <td>
-                                            <a href="<?php echo base_url('customer/read/'.$data->id); ?>"
-                                            class="btn btn-primary"
-                                            >
-                                             รายละเอียด   
-                                            </a>
-                                                
-                                            </td>
+                                            <td><?php echo  $data->firstname . ' ' . $data->lastname; ?></td>
+                                            <td><?php echo  $data->department; ?></td>
                                            <!--  <td><?php echo  $data->user_type; ?></td>  -->
                                            <td>
-                                            	<a class="btn btn-danger btn-xs deleteLine" href="<?php echo  base_url('customer/remove/'.$data->id); ?>" role="button"><i class="fa fa-fw fa-trash"></i> ลบข้อมูล</a>
+                                            	<a class="btn btn-danger btn-xs deleteLine" href="<?php echo  base_url('user/remove/'.$data->id); ?>" role="button"><i class="fa fa-fw fa-trash"></i> ลบข้อมูล</a>
                                             </td> 
                                         </tr>
                                     <?php } } ?>

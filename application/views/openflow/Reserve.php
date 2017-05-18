@@ -1,3 +1,22 @@
+<?php echo link_tag('plugins/datepicker/datepicker3.css'); ?>
+<script src="<?php echo base_url(); ?>plugins/datepicker/bootstrap-datepicker.js" type="text/javascript"></script>
+<script src="<?php echo base_url(); ?>plugins/datepicker/locales/bootstrap-datepicker.th.js" type="text/javascript"></script>
+<script type="text/javascript" src="<?php echo base_url(); ?>js/jquery.popupwindow.js"></script>
+<script type="text/javascript">
+    var profiles =
+            {
+                windowCenter:
+                        {
+                            height: 600,
+                            width: 800,
+                            center: 1
+                        }
+            };
+    $(function ()
+    {
+        $(".popupwindow").popupwindow(profiles);
+    });
+</script>
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -25,7 +44,7 @@
                     <div class="row">
                         <div class="col-sm-6">
                             <?php if(!empty($flows)){ foreach ($flows as $da) { ?>
-                            <a class="btn btn-success" href="<?php echo  base_url('openflow/reserve/' .$da->id); ?>" role="button"><i class="fa fa-fw fa-plus-circle"></i> เพิ่มสินค้า</a>
+                            <a class="btn btn-success btn-flat popupwindow"  rel="windowCenter" role="button" href="<?php echo  base_url('openflow/itemup'); ?>" role="button"><i class="fa fa-fw fa-plus-circle"></i> เพิ่มสินค้า</a>
                             <a class="btn btn-default" href="<?php echo  base_url('openflow'); ?>" role="button"><i class="fa fa-fw fa-refresh"></i> Refresh Data</a>
                             <div class="form-group">
                             
@@ -56,17 +75,21 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php if(!empty($results)){ foreach ($results as $data) { ?>
+                                    
                                         <tr role="row">
-                                            <td><?php echo $data->barcode;  ?></td>
-                                            <td><?php echo $data->itemname; ?></td>
-                                            <td><?php echo $data->price;    ?></td>
-                                            <td><?php echo $data->count;    ?></td>
-                                            <td><?php echo $data->unit;     ?></td>
-                                            <td></td>
+                                            <td><input type="text" id="barcode" class="form-control" name="barcode" value="<?php echo $this->session->flashdata('barcode'); ?>" readonly="true">
+                                            </td>
+                                            <td><input type="text" id="itemname" class="form-control" name="itemname" value="<?php echo $this->session->flashdata('itemname'); ?>" readonly="true">
+                                            </td>
+                                            <td><input type="text" id="price" class="form-control" name="price" value="<?php echo $this->session->flashdata('price'); ?>" readonly="true">
+                                            </td>
+                                            <td><input type="text" id="count" class="form-control" name="count" value="<?php echo $this->session->flashdata('count'); ?>">
+                                            </td>
+                                            <td><input type="text" id="unit" class="form-control" name="unit" value="<?php echo $this->session->flashdata('unit'); ?>" readonly="true"></td>
+                                            <td><input type="text" id="total" class="form-control" name="total" value="<?php echo $this->session->flashdata('total'); ?>" readonly="true"></td>
                                             
                                         </tr>
-                                    <?php } } ?>
+                                    
                                 </tbody>
 
                             </table>
@@ -99,4 +122,13 @@ $(document).ready(function(){
     });
 });  
 </script>
+<script type="text/javascript">
+    $('#open_date').datepicker({
+        format: 'dd/mm/yyyy'
+        , todayHighlight: true
+        , language: 'th'
+        , autoclose: 'true'
+    });
+</script>
+
 

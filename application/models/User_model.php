@@ -56,7 +56,7 @@ class User_model extends CI_Model {
             //'filename' => $filename,
             'firstname' => $this->input->post('firstname'),
             'lastname' => $this->input->post('lastname'),
-            //'phone' => $this->input->post('phone'),
+            'phone' => $this->input->post('phone'),
             'username' => $this->input->post('username'),
             'email' => $this->input->post('email'),
             //'department' => $this->input->post('department'),

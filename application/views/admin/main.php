@@ -65,13 +65,13 @@
       height: 480px;
     }
 #thumbnail-preview-indicators .slides .slide-1 {
-  background-image: url(https://s3.amazonaws.com/ooomf-com-files/wdXqHcTwSTmLuKOGz92L_Landscape.jpg); 
+  background-image: url(<?php echo base_url(); ?>pictures/1.jpg); 
 }
 #thumbnail-preview-indicators .slides .slide-2 {
-  background-image: url(https://s3.amazonaws.com/ooomf-com-files/tU3ptNgGSP6U2fE67Gvy_SYDNEY-162.jpg);
+  background-image: url(<?php echo base_url(); ?>pictures/2.jpg);
 }
 #thumbnail-preview-indicators .slides .slide-3 {
-  background-image: url(https://s3.amazonaws.com/ooomf-com-files/mtNrf7oxS4uSxTzMBWfQ_DSC_0043.jpg);
+  background-image: url(<?php echo base_url(); ?>pictures/3.jpg);
 }
 #thumbnail-preview-indicators .carousel-inner .item .carousel-caption {
   top: 20%;

@@ -41,6 +41,11 @@ class User extends CI_Controller {
         $this->load->view('user/register');
         //$this->load->view('template/backfooter');
     }
+    public function Login_admin() {
+        //$this->load->view('template/backheader');
+        $this->load->view('user/Admin');
+        //$this->load->view('template/backfooter');
+    }
     public function registernbu() {
         //$this->load->view('template/backheader');
         $this->load->view('user/registernorth');
@@ -53,6 +58,7 @@ class User extends CI_Controller {
     }
 
     public function postdata() {
+        
         if ($this->input->server('REQUEST_METHOD') == TRUE) {
 
           if($this->input->post('username')=='admin' && $this->session->userdata('username')!='admin'){
@@ -169,7 +175,9 @@ class User extends CI_Controller {
         }
     }
 
+    
     public function new_user() {
+
         if ($this->input->server('REQUEST_METHOD') == TRUE) {
 
           if($this->input->post('username')=='admin' && $this->session->userdata('username')!='admin'){
@@ -224,7 +232,9 @@ class User extends CI_Controller {
             if ($this->input->post('id') == '') {
                 //$this->form_validation->set_rules('user_type', 'ประเภทผู้ใช้งาน', 'required', array('required' => 'ค่าห้ามว่าง!'));
 
-                $this->form_validation->set_rules('username', 'ชื่อผู้ใช้งาน', 'trim|required|min_length[5]|max_length[12]|is_unique[users.username]|alpha_numeric', array(
+                $this->form_validation->set_rules('username', 'ชื่อผู้ใช้งาน', 'trim|required|min_length[5]|max_length[12]|is_unique[users.username]|alpha_numeric', 
+
+                    array(
                     'trim' => 'มีค่าว่าง',
                     'required' => 'ค่าห้ามว่าง',
                     'min_length' => 'ต้องมากกว่า 4 ตัวอักษรขึ้นไป',
@@ -240,6 +250,13 @@ class User extends CI_Controller {
                     'alpha_numeric' => 'ต้องเป็นตัวอักษรภาษาอังกฤษและตัวเลขเท่านั้น'
                 ));
                 $this->form_validation->set_rules('firstname', 'ชื่อจริง', 'required', array('required' => 'ค่าห้ามว่าง!'));
+                $this->form_validation->set_rules('lastname', 'นามสกุล', 'required', array('required' => 'ค่าห้ามว่าง!'));
+                $this->form_validation->set_rules('email', 'อีเมล์', 'trim|required|valid_email', array(
+                    'trim' => 'มีค่าว่าง',
+                    'required' => 'ค่าห้ามว่าง',
+                    'valid_email' => 'รูปแบบอีเมล์ไม่ถูกต้อง'
+                ));
+
             } else {
                 $this->form_validation->set_rules('password', 'รหัสผ่านเข้าใช้งาน', 'trim|min_length[6]|max_length[20]|alpha_numeric', array(
                     'trim' => 'มีค่าว่าง',
@@ -248,6 +265,11 @@ class User extends CI_Controller {
                     'alpha_numeric' => 'ต้องเป็นตัวอักษรภาษาอังกฤษและตัวเลขเท่านั้น'
                 ));
                 $this->form_validation->set_rules('firstname', 'ชื่อจริง', 'required', array('required' => 'ค่าห้ามว่าง!'));
+                $this->form_validation->set_rules('email', 'อีเมล์', 'trim|required|valid_email', array(
+                    'trim' => 'มีค่าว่าง',
+                    'required' => 'ค่าห้ามว่าง',
+                    'valid_email' => 'รูปแบบอีเมล์ไม่ถูกต้อง'
+                ));
             }
 
 
@@ -272,13 +294,15 @@ class User extends CI_Controller {
                 redirect('user/login', 'refresh');
             } else {
                 $data = array(
-                    'error_user_type' => form_error('user_type'),
-                    'username' => set_value('username'),
+                    'error_user_type' => form_error('lastname'),
+                    'username' => set_value('lastname'),
                     'error_username' => form_error('username'),
                     'password' => set_value('password'),
                     'error_password' => form_error('password'),
                     'firstname' => set_value('firstname'),
                     'error_firstname' => form_error('firstname'),
+                    'email' => set_value('email'),                    
+                    'error_email' => form_error('email'),
                     'err_filename' => form_error('filename'),
                     //'err_filename' => $this->upload->display_errors()
                 );

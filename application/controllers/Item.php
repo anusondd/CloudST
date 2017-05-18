@@ -106,7 +106,7 @@ class Item extends CI_Controller {
             //------------------------------------------------------------------
             $this->form_validation->set_rules('name', 'ชื่อสินค้า', 'required', array('required' => 'ค่าห้ามว่าง!'));
             $this->form_validation->set_rules('itemtype_id', 'ชื่อประเภทสินค้า', 'required', array('required' => 'ค่าห้ามว่าง!'));
-            $this->form_validation->set_rules('price', 'ราคา', 'numeric', array('numeric' => 'ค่าไม่ใช้ตัวเลข'));
+            $this->form_validation->set_rules('price', 'ราคา', 'numeric', array('numeric' => 'ค่าไม่ใช่ตัวเลข'));
             $this->form_validation->set_rules('barcode', 'รหัสสินค้า', 'required', array('required' => 'ค่าห้ามว่าง!'));
             $this->form_validation->set_rules('unit', 'หน่วยนับสินค้า', 'required', array('required' => 'ค่าห้ามว่าง'));
 

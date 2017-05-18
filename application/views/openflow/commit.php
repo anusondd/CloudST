@@ -44,15 +44,18 @@
                 <input type="hidden" name="item_id" id="item_id" value="<?php echo $this->session->flashdata('item_id'); ?>" >
                 <input type="hidden" name="location_id" id="location_id" value="<?php echo $this->session->flashdata('location_id'); ?>" >
                 <input type="hidden" name="onqty" id="onqty" value="<?php echo $this->session->flashdata('onqty'); ?>" >
+                <input type="hidden" name="status" id="status" value="Payed" >
                 <div class="box-body">
                     <div class="form-group">
                         <label for="exampleInputEmail1">รหัสสินค้า</label> <?php echo $this->session->flashdata('error_barcode'); ?>
-                        <div class="input-group input-group-sm">
+                        
                             <input type="text" id="barcode" class="form-control" name="barcode" value="<?php echo $result->barcode; ?>" readonly="true">
+                            <!--
                             <span class="input-group-btn">
                                 <a class="btn btn-info btn-flat popupwindow" rel="windowCenter" role="button" href="<?php echo base_url(); ?>openflow/flowup"><i class="fa fa-search"></i> ค้นหารหัสสินค้า!</a>
                             </span>
-                        </div>
+                            -->
+                        
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">ชื่อสินค้า</label> <?php echo $this->session->flashdata('error_itemname'); ?>
@@ -64,7 +67,11 @@
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">จำนวนการสั่งซื้อสินค้า</label> <?php echo $this->session->flashdata('error_count'); ?> 
-                        <input type="text" id="count" class="form-control" name="count" value="<?php echo $result->count; ?>">
+                        <input type="text" id="count" class="form-control" name="count" value="<?php echo $result->count; ?>" readonly="true">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">ราคาสุทธิ</label> <?php echo $this->session->flashdata('error_total'); ?> 
+                        <input type="text" id="total" class="form-control" name="total" value="<?php echo $result->count*$result->price; ?>" readonly="true">
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">วันที่สั่งซื้อสินค้า</label> <?php echo $this->session->flashdata('error_open_date'); ?>
@@ -72,12 +79,14 @@
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">ชื่อลูกค้า</label> <?php echo $this->session->flashdata('error_open_entry'); ?>
-                        <div class="input-group input-group-sm">
+                        
                             <input type="text" id="open_entry" class="form-control" name="open_entry" value="<?php echo $result->name_customer; ?>" readonly="true">
+                            <!--
                             <span class="input-group-btn">
                                 <a class="btn btn-info btn-flat popupwindow" rel="windowCenter" role="button" href="<?php echo base_url(); ?>openflow/userup"><i class="fa fa-search"></i> ค้นหาชื่อลูกค้า</a>
                             </span>
-                        </div>
+                            -->
+                        
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">รหัสประจำตัวลูกค้า</label> <?php echo $this->session->flashdata('error_open_id'); ?>
@@ -152,8 +161,12 @@
                     </div>
 
                 </div> /.box-body -->
+                <div class="form-group">
+                        <label for="exampleInputEmail1">Tack</label> <?php echo $this->session->flashdata('error_total'); ?> 
+                        <input type="text" id="Tack" class="form-control" name="Tack" value="" >
+                    </div>
                 <div class="box-footer">
-                    <button class="btn btn-primary" type="submit"><i class="fa fa-fw fa-save"></i> บันทึกรายการสั่งซื้อ</button>
+                    <button class="btn btn-success commitLine" type="submit"><i class="fa fa-fw fa-save"></i> ยืนยันการชำระเงิน</button>                  
                     <a class="btn btn-danger" href="<?php echo base_url('dashboard'); ?>" role="button"><i class="fa fa-fw fa-close"></i> ยกเลิก</a>
                 </div>
             </form>
@@ -173,6 +186,16 @@ function sumFunction() {
     alert("You pressed a key inside the input field");
 }
 
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){
+    $('.commitLine').click(function(){
+       if(!confirm("ข็อมูลจะไม่สามารถแก้ไขได้ถ้ากดยืนยัน?")){
+           return false;
+       } 
+    });
+});  
 </script>
 
 

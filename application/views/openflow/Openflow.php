@@ -60,76 +60,10 @@
                     <div class="form-group">
                         <label for="exampleInputEmail1">รหัสประจำตัวลูกค้า</label> <?php echo $this->session->flashdata('error_open_id'); ?>
                         <input type="text" id="open_id" class="form-control" name="open_id" value="<?php echo $this->session->flashdata('open_id'); ?>" readonly="true">
-                    </div>
-
-                    <!--
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">เพิ่มสินค้า</label> <?php echo $this->session->flashdata('error_itemname'); ?>
-                        <div class="input-group input-group-sm">
-                            
-                            <input type="text" name="itemname" id="itemname" class="form-control" value="<?php echo $this->session->flashdata('itemname'); ?>" readonly="true">
-                            <span class="input-group-btn">
-                                <a class="btn btn-info btn-flat popupwindow" rel="windowCenter" role="button" href="<?php echo base_url(); ?>openflow/flowup"><i class="fa fa-search"></i> ค้นหาสินค้า!</a>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="table-responsive">
-                        
+                    </div>                  
                     
-                    <table class="table table-bordered table-hover table-striped">
-                        <thead>
-                            <tr>
-                                <th>รหัสสินค้า</th>
-                                <th>ชื่อสินค้า</th>
-                                <th>ราคา</th>
-                                <th>จำนวน</th>
-                                <th>รวม</th>
 
-                                
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>
-                                <input type="text" name="barcode" id="barcode" class="form-control" value="<?php echo $this->session->flashdata('barcode'); ?>" readonly="true"> 
-                                </td>
-                                <td>
-                                <input type="text" name="itemname" id="itemname" class="form-control" value="<?php echo $this->session->flashdata('itemname'); ?>" readonly="true">
-                                </td>
-                                <td>
-                                <input type="price" name="price" id="price" class="form-control" value="<?php echo $this->session->flashdata('price'); ?> " readonly="true">
-                                </td>
-                                <td>
-                                <input type="text" name="unit" id="unit" class="form-control" value="1" onkeydown="sumFunction()" >
-                                 </td>
-                                <td> <input type="price" name="sum" id="sum" class="form-control" value="<?php echo $this->session->flashdata('sum'); ?> " readonly="true"> </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    </div>
-					-->
-
-
-                              
-                    <!-- <div class="form-group">
-                        <label for="exampleInputEmail1">ชื่อสินค้า</label> <?php echo $this->session->flashdata('error_itemname'); ?>
-                        <input type="text" id="itemname" class="form-control" name="itemname" value="<?php echo $this->session->flashdata('itemname'); ?>" readonly="true">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">จำนวนการสั่งซื้อสินค้า</label> <?php echo $this->session->flashdata('error_open_qty'); ?> <?php echo $this->session->flashdata('error_onqty'); ?>
-                        <input type="text" id="open_qty" class="form-control" name="open_qty" value="<?php echo $this->session->flashdata('open_qty'); ?>">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">หน่วยนับ</label> <?php echo $this->session->flashdata('error_unit'); ?>
-                        <input type="text" id="unit" class="form-control" name="unit" value="<?php echo $this->session->flashdata('unit'); ?>" readonly="true">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">คลังสินค้า</label> <?php echo $this->session->flashdata('error_location_name'); ?>
-                        <input type="text" id="location_name" class="form-control" name="location_name" value="<?php echo $this->session->flashdata('location_name'); ?>" readonly="true">
-                    </div>
-
-                </div> /.box-body -->
+                </div> 
                 <div class="box-footer">
                     <button class="btn btn-primary" type="submit"><i class="fa fa-fw fa-save"></i> สร้างรายการสั่งซื้อใหม่</button>
                     <a class="btn btn-danger" href="<?php echo base_url('dashboard'); ?>" role="button"><i class="fa fa-fw fa-close"></i> ยกเลิก</a>

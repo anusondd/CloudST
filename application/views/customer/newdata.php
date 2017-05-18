@@ -61,7 +61,7 @@
                     <div class="form-group">
                         <label for="exampleInputEmail1">นามสกุลจริง</label> <?php echo $this->session->flashdata('error_lastname'); ?>
                         <input type="text" id="lastname" class="form-control" name="lastname" value="<?php echo $this->session->flashdata('lastname'); ?>">
-                    </div>
+                    </div> 
                     <div class="form-group">
                         <label for="exampleInputEmail1">เบอร์โทรศัพท์</label> <?php echo $this->session->flashdata('error_phone'); ?>
                         <input type="text" id="phone" class="form-control" name="phone" value="<?php echo $this->session->flashdata('phone'); ?>">
